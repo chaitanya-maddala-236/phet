@@ -63,7 +63,7 @@ export const exportTarget = async (target: Target, bananaI18n: Banana) => {
   )
 
   const iso6393LanguageCode = target.languages.length > 1 ? 'mul' : getISO6393(target.languages[0]) || 'mul'
-  const iso6391LanguageCode = target.languages.length > 1 ? 'mul' : iso6393To1[iso6393LanguageCode]
+  const iso6391LanguageCode = target.languages.length > 1 ? 'mul' : iso6393To1[iso6393LanguageCode] || target.languages[0]
 
   const iso6393LanguageCodes = target.languages.map(getISO6393)
 
@@ -87,7 +87,7 @@ export const exportTarget = async (target: Target, bananaI18n: Banana) => {
   creator.setMainPath('index.html')
 
   const metadata = {
-    Name: `phets_${iso6391LanguageCode}_all`,
+    Name: `phet_${iso6391LanguageCode}_all`,
     Title: bananaI18n.getMessage('zim-title'),
     Description: bananaI18n.getMessage('zim-description'),
     Creator: 'University of Colorado',
